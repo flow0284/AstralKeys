@@ -45,7 +45,7 @@ function e.BNFriendUpdate(index)
 	local accountInfo = C_BattleNet.GetFriendAccountInfo(index)
 
 	for gameIndex = 1, C_BattleNet.GetFriendNumGameAccounts(index) do		
-		local gameAccountInfo = C_BattleNet.GetFriendGameAccountInfo(index, gameIndex)		
+		local gameAccountInfo = C_BattleNet.GetFriendGameAccountInfo(index, gameIndex)	
 		if BNFriendList[gameAccountInfo.gameAccountID] and gameAccountInfo.clientProgram ~= BNET_CLIENT_WOW and gameAccountInfo.wowProjectID ~= 1 then -- They are logged into the client, but they are not logged into retail WoW
 			BNFriendList[gameAccountInfo.gameAccountID] = nil
 		end
@@ -581,10 +581,10 @@ e.AddListSort('FRIENDS', FriendSort)
 -- Friend's list Hooking
 do
 	for i = 1, 5 do
-		local textString = FriendsTooltip:CreateFontString('FriendsTooltipAstralKeysInfo' .. i, 'ARTWORK', 'FriendsFont_Small')
-		textString:SetJustifyH('LEFT')
-		textString:SetSize(168, 0)
-		textString:SetTextColor(0.486, 0.518, 0.541)
+		local textstring = FriendsTooltip:CreateFontString('FriendsTooltipAstralKeysInfo' .. i, 'ARTWORK', 'FriendsFont_Small')
+		textstring:SetJustifyH('LEFT')
+		textstring:SetSize(168, 0)
+		textstring:SetTextColor(0.486, 0.518, 0.541)
 	end
 
 	local OnEnter, OnHide
@@ -680,7 +680,7 @@ local function TooltipHook(self)
     local id = e.UnitID(unit)
     if id then
     	GameTooltip:AddLine(' ')
-        GameTooltip:AddLine('Current Keystone')
+        GameTooltip:AddLine(L['Current Keystone'])
         GameTooltip:AddDoubleLine(e.GetMapName(e.UnitMapID(id)), e.UnitKeyLevel(id), 1, 1, 1, 1, 1, 1)
         return
     end
@@ -688,7 +688,7 @@ local function TooltipHook(self)
     local id = e.FriendID(unit)
     if id then
     	GameTooltip:AddLine(' ')
-        GameTooltip:AddLine('Current Keystone')
+        GameTooltip:AddLine(L['Current Keystone'])
         GameTooltip:AddDoubleLine(e.GetMapName(AstralFriends[id][4]), AstralFriends[id][5], 1, 1, 1, 1, 1, 1)
         return
     end

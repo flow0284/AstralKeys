@@ -138,12 +138,12 @@ AstralEvents:Register('MYTHIC_PLUS_CURRENT_AFFIX_UPDATE', UpdateMythicPlusAffixe
 
 function e.AffixOne(weekOffSet)
 	local offSet = weekOffSet or 0
-
+	
 	if offSet == 0 then
 		return AffixOneID
 	end
-
-	local week = (ROTATION_WEEK_POSITION + weekOffSet) % 12
+	
+	local week = (ROTATION_WEEK_POSITION + weekOffSet) / 12
 	--local week = (e.Week + offSet) % 12
 	if week == 0 then week = 12 end
 	return AFFIX_ROTATION[week][1]
@@ -151,25 +151,25 @@ end
 
 function e.AffixTwo(weekOffSet)
 	local offSet = weekOffSet or 0
-
+	
 	if offSet == 0 then
 		return AffixTwoID
 	end
 	local week = (ROTATION_WEEK_POSITION + weekOffSet) % 12
---	local week = (e.Week + offSet) % 12
+	--local week = (e.Week + offSet) % 12
 	if week == 0 then week = 12 end
 	return AFFIX_ROTATION[week][2]
 end
 
 function e.AffixThree(weekOffSet)
 	local offSet = weekOffSet or 0
-
+	
 	if offSet == 0 then
 		return AffixThreeID
 	end
 
 	local week = (ROTATION_WEEK_POSITION + weekOffSet) % 12	
---	local week = (e.Week + offSet) % 12
+	--local week = (e.Week + offSet) % 12
 	if week == 0 then week = 12 end
 	return AFFIX_ROTATION[week][3]
 
@@ -199,7 +199,7 @@ end
 function e.GetAffixID(id, weekOffSet)
 	local offSet = weekOffSet or 0
 	--local week = (e.Week + offSet) % 12
-	local week = (ROTATION_WEEK_POSITION + weekOffSet) % 12	
+	local week = (ROTATION_WEEK_POSITION + weekOffSet) % 12
 	if week == 0 then week = 12 end
 	return AFFIX_ROTATION[week][id] or SEASON_AFFIX
 end
